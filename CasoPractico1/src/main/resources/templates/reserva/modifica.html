@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{salon/base :: head}"></head>
+    <body>
+
+        <nav th:replace="~{salon/base :: navbar}"></nav>
+        <header th:replace="~{salon/base :: header}"></header>
+
+        <div class="container mt-4">
+            <h2>Modificar Reserva</h2>
+
+            <form th:action="@{/reserva/guardar}" method="post" th:object="${reserva}" class="row g-2">
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="col-md-4">
+                    <input type="text" th:field="*{nombreCliente}" class="form-control" required>
+                </div>
+
+                <div class="col-md-3">
+                    <input type="date" th:field="*{fecha}" class="form-control" required>
+                </div>
+
+                <div class="col-md-5">
+                    <select th:field="*{servicio.id}" class="form-select" required>
+                        <option th:each="s : ${servicios}"
+                                th:value="${s.id}"
+                                th:text="${s.nombre}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-12 mt-2">
+                    <button class="btn btn-primary">Guardar</button>
+                    <a class="btn btn-link" th:href="@{/reserva/listado}">Volver</a>
+                </div>
+            </form>
+        </div>
+
+        <footer th:replace="~{salon/base :: footer}"></footer>
+    </body>
+</html>

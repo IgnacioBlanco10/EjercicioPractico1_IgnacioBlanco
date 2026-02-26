@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{salon/base :: head}"></head>
+    <body>
+
+        <nav th:replace="~{salon/base :: navbar}"></nav>
+        <header th:replace="~{salon/base :: header}"></header>
+
+        <div class="container mt-4">
+
+            <h2>Quejas y Sugerencias</h2>
+            <p class="text-muted">Este formulario es solo interfaz.</p>
+
+            <div class="card p-4 shadow-sm">
+
+                <form>
+
+                    <div class="mb-3">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Tu nombre" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Correo</label>
+                        <input type="email" class="form-control" placeholder="correo@email.com" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Teléfono</label>
+                        <input type="text" class="form-control" placeholder="Tu teléfono">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Mensaje</label>
+                        <textarea class="form-control" rows="4" placeholder="Escriba su mensaje aquí..." required></textarea>
+                    </div>
+
+                    <button class="btn btn-primary">Enviar</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <footer th:replace="~{salon/base :: footer}"></footer>
+
+    </body>
+</html>

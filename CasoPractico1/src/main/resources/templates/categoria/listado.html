@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{salon/base :: head}"></head>
+    <body>
+
+        <nav th:replace="~{salon/base :: navbar}"></nav>
+        <header th:replace="~{salon/base :: header}"></header>
+
+        <div class="container mt-4">
+            <h2>Categorías</h2>
+
+            <form th:action="@{/categoria/guardar}" method="post" th:object="${categoria}" class="row g-2">
+                <input type="hidden" th:field="*{id}"/>
+                <div class="col-md-8">
+                    <input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre de categoría" required>
+                </div>
+                <div class="col-md-4">
+                    <button class="btn btn-success w-100">Guardar</button>
+                </div>
+            </form>
+
+            <hr>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th style="width: 180px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="c : ${categorias}">
+                        <td th:text="${c.nombre}"></td>
+                        <td>
+                            <a class="btn btn-warning btn-sm"
+                               th:href="@{/categoria/modificar/{id}(id=${c.id})}">Editar</a>
+                            <a class="btn btn-danger btn-sm"
+                               th:href="@{/categoria/eliminar/{id}(id=${c.id})}">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer th:replace="~{salon/base :: footer}"></footer>
+    </body>
+</html>

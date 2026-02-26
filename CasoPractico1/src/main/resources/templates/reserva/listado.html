@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{salon/base :: head}"></head>
+    <body>
+
+        <nav th:replace="~{salon/base :: navbar}"></nav>
+        <header th:replace="~{salon/base :: header}"></header>
+
+        <div class="container mt-4">
+            <h2>Reservas</h2>
+
+            <form th:action="@{/reserva/guardar}" method="post" th:object="${reserva}" class="row g-2">
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="col-md-4">
+                    <input type="text" th:field="*{nombreCliente}" class="form-control"
+                           placeholder="Nombre del cliente" required>
+                </div>
+
+                <div class="col-md-3">
+                    <input type="date" th:field="*{fecha}" class="form-control" required>
+                </div>
+
+                <div class="col-md-3">
+                    <select th:field="*{servicio.id}" class="form-select" required>
+                        <option value="" disabled selected>Seleccione servicio</option>
+                        <option th:each="s : ${servicios}"
+                                th:value="${s.id}"
+                                th:text="${s.nombre}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <button class="btn btn-success w-100">Guardar</button>
+                </div>
+            </form>
+
+            <hr>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Servicio</th>
+                        <th style="width:180px;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="r : ${reservas}">
+                        <td th:text="${r.nombreCliente}"></td>
+                        <td th:text="${r.fecha}"></td>
+                        <td th:text="${r.servicio.nombre}"></td>
+                        <td>
+                            <a class="btn btn-warning btn-sm"
+                               th:href="@{/reserva/modificar/{id}(id=${r.id})}">Editar</a>
+                            <a class="btn btn-danger btn-sm"
+                               th:href="@{/reserva/eliminar/{id}(id=${r.id})}">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer th:replace="~{salon/base :: footer}"></footer>
+    </body>
+</html>

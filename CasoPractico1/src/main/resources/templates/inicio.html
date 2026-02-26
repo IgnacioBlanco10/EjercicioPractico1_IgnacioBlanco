@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{salon/base :: head}"></head>
+    <body>
+
+        <nav th:replace="~{salon/base :: navbar}"></nav>
+        <header th:replace="~{salon/base :: header}"></header>
+
+        <div class="container mt-4">
+
+            <div class="p-4 mb-4 rounded-3 text-white shadow" style="background-color: #ff4da6;">
+                <h1 class="display-6">Bienvenido al Salón de Belleza</h1>
+                <p class="lead">
+                    Descubrí nuestros servicios y reservá tu cita fácilmente.
+                </p>
+                <a class="btn btn-light" th:href="@{/reserva/listado}">Reservar ahora</a>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-6 p-3 rounded-3 shadow-sm" style="background-color: #ffe6f0;">
+                    <h3>Sobre Nosotros</h3>
+                    <p>
+                        Ofrecemos servicios profesionales de belleza con atención personalizada.
+                    </p>
+                    <ul>
+                        <li>Cortes y peinados</li>
+                        <li>Tratamientos capilares</li>
+                        <li>Manicure y pedicure</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>Promoción</h3>
+
+                    <div class="ratio ratio-16x9">
+                        <iframe
+                            src="https://www.youtube.com/embed/NolrpCiFFCM"
+                            title="Promoción"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+
+        </div>
+
+        <footer th:replace="~{salon/base :: footer}"></footer>
+    </body>
+</html>
